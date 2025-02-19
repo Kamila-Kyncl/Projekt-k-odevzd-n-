@@ -33,17 +33,41 @@ TEXTS = [
     garpike and stingray are also present.'''
 ]
 
-# registrováni uživatele 
-users = [ "bob", "ann", "mike", "liz"]
+#slovník s uživatelskými jmény a hesly 
+users = { "bob": "123",
+         "ann": "pass123",
+         "mike": "password123",
+         "liz": "pass123"
+         }
 
-# hesla uživatelů 
-passwords = ["123", "pass123", "password123", "pass123"]
+#uživatelský vstup
+username = input ("username:")
+password = input ("password:")
+print("-" * 40)
 
-# dotaz na přihlašovací jméno 
-print("username:", end= "")
-user = input()
+# ověření přihlášení 
+import sys 
+if username in users and users [username] == password:
+    print(f"Welcome to the app, {username}.\nWe have 3 texts to be analyzed.")
+else:
+    print("unregistered user, terminating the program..")
+    sys.exit()
 
-# dotaz na heslo 
-print("password:", end= "")
-password = input()
+print("-" * 40)
+
+#výběr textu
+try:
+    TEXT = int(input("Enter a number btw. 1 and 3 to select:"))
+    if TEXT not in [1, 2, 3]:
+        print("Invalid choice, terminating the program..")
+    sys.exit()
+except ValueError:
+    print("Invalid input, please enter a number.")
+    sys.exit()
+    
+
+    
+
+
+
 
