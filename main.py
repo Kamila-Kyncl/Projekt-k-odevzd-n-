@@ -40,5 +40,10 @@ users = [ "bob", "ann", "mike", "liz"]
 passwords = ["123", "pass123", "password123", "pass123"]
 
 # dotaz na přihlašovací jméno 
-print("username:")
+print("username:", end= "")
 user = input()
+
+# dotaz na heslo 
+print("password:", end= "")
+password = input()
+
