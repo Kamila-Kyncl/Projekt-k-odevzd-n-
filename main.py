@@ -64,7 +64,13 @@ try:
 except ValueError:
     print("Invalid input, please enter a number.")
     sys.exit()
-    
+selected_text = TEXTS[TEXT - 1]
+
+print("-" * 40)
+
+
+
+
 
     
 
