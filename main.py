@@ -6,14 +6,6 @@ email: kamilka.frolikova@gmail.com
 """
 import re
 TEXTS = [
-    '''Situated about 10 miles west of Kemmerer,
-    Fossil Butte is a ruggedly impressive
-    topographic feature that rises sharply
-    some 1000 feet above Twin Creek Valley
-    to an elevation of more than 7500 feet
-    above sea level. The butte is located just
-    north of US 30 and the Union Pacific Railroad,
-    which traverse the valley.''',
     '''At the base of Fossil Butte are the bright
     red, purple, yellow and gray beds of the Wasatch
     Formation. Eroded portions of these horizontal
@@ -87,6 +79,29 @@ print("There are " ,total_numbers, " numeric strings.")
 print("The sum of all the numbers" ,sum_numbers)
 
 print("-" * 40)
+
+# počítání výskytu délek slov
+length_counts = {}
+for word in words:
+    length = len(word) #délka slova
+    if length in length_counts:
+        length_counts[length] += 1 #zvýšíme počet
+    else:
+        length_counts[length] = 1 #přidáme novou délku
+
+#výpis výsledku
+print("LEN|  OCCURENCES  |NR.")
+
+print("-" * 40)
+
+for length in sorted(length_counts): #seřazení podle délky 
+    print(f"{length}\t | {"*" * length_counts[length]:20} | {length_counts[length]}")
+    
+    
+
+
+
+
 
 
 
