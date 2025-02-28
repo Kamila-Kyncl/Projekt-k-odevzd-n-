@@ -4,7 +4,7 @@ projekt_1.py: první projekt do Engeto Online Python Akademie
 author: Kamila Kynčl
 email: kamilka.frolikova@gmail.com
 """
-
+import re
 TEXTS = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
@@ -60,13 +60,43 @@ try:
     TEXT = int(input("Enter a number btw. 1 and 3 to select:"))
     if TEXT not in [1, 2, 3]:
         print("Invalid choice, terminating the program..")
-    sys.exit()
+
 except ValueError:
     print("Invalid input, please enter a number.")
     sys.exit()
 selected_text = TEXTS[TEXT - 1]
 
 print("-" * 40)
+
+#rozdělení textu na slova a další naše požadavky 
+words = selected_text.split()
+total_words = len(words)
+titlecase_words = sum(1 for word in words if word.istitle())
+uppercase_words = sum(1 for word in words if word.isupper())
+lowercase_words = sum(1 for word in words if word.islower())
+
+numer = [int(num) for num in re.findall(r'\b\d+\b', selected_text)]
+total_numbers = len(numer)
+sum_numbers = sum(numer)
+
+print("There are " ,total_words, " words in the selected text.")
+print("There are " ,titlecase_words, " titlecase words.")
+print("There are " ,uppercase_words, " uppercase words.")
+print("There are " ,lowercase_words, " lowercase words.")
+print("There are " ,total_numbers, " numeric strings.")
+print("The sum of all the numbers" ,sum_numbers)
+
+print("-" * 40)
+
+
+
+
+
+
+
+
+
+
 
 
 
