@@ -6,6 +6,14 @@ email: kamilka.frolikova@gmail.com
 """
 import re
 TEXTS = [
+    '''Situated about 10 miles west of Kemmerer,
+    Fossil Butte is a ruggedly impressive
+    topographic feature that rises sharply
+    some 1000 feet above Twin Creek Valley
+    to an elevation of more than 7500 feet
+    above sea level. The butte is located just
+    north of US 30 and the Union Pacific Railroad,
+    which traverse the valley.''',
     '''At the base of Fossil Butte are the bright
     red, purple, yellow and gray beds of the Wasatch
     Formation. Eroded portions of these horizontal
@@ -52,6 +60,7 @@ try:
     TEXT = int(input("Enter a number btw. 1 and 3 to select:"))
     if TEXT not in [1, 2, 3]:
         print("Invalid choice, terminating the program..")
+        sys.exit()
 
 except ValueError:
     print("Invalid input, please enter a number.")
@@ -62,10 +71,11 @@ print("-" * 40)
 
 #rozdělení textu na slova a další naše požadavky 
 words = selected_text.split()
-total_words = len(words)
-titlecase_words = sum(1 for word in words if word.istitle())
-uppercase_words = sum(1 for word in words if word.isupper())
-lowercase_words = sum(1 for word in words if word.islower())
+clean_words = [word.strip(",.!?-") for word in words]
+total_words = len(clean_words)
+titlecase_words = sum(1 for word in clean_words if word.istitle())
+uppercase_words = sum(1 for word in clean_words if word.isupper())
+lowercase_words = sum(1 for word in clean_words if word.islower())
 
 numer = [int(num) for num in re.findall(r'\b\d+\b', selected_text)]
 total_numbers = len(numer)
@@ -82,7 +92,7 @@ print("-" * 40)
 
 # počítání výskytu délek slov
 length_counts = {}
-for word in words:
+for word in clean_words:
     length = len(word) #délka slova
     if length in length_counts:
         length_counts[length] += 1 #zvýšíme počet
