@@ -1,10 +1,13 @@
 """
-projekt_1.py: první projekt do Engeto Online Python Akademie
+main.py: první projekt do Engeto Online Python Akademie
 
 author: Kamila Kynčl
 email: kamilka.frolikova@gmail.com
 """
+
+import sys 
 import re
+
 TEXTS = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
@@ -46,7 +49,6 @@ password = input ("password:")
 print("-" * 40)
 
 # ověření přihlášení 
-import sys 
 if username in users and users [username] == password:
     print(f"Welcome to the app, {username}.\nWe have 3 texts to be analyzed.")
 else:
@@ -71,7 +73,7 @@ print("-" * 40)
 
 #rozdělení textu na slova a další naše požadavky 
 words = selected_text.split()
-clean_words = [word.strip(",.!?-") for word in words]
+clean_words = [word.strip(".,!?;:-'\"") for word in words]
 total_words = len(clean_words)
 titlecase_words = sum(1 for word in clean_words if word.istitle())
 uppercase_words = sum(1 for word in clean_words if word.isupper())
